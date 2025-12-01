@@ -8,14 +8,14 @@ const router = express.Router();
 // Vercel-compatible: use memory storage (NO disk)
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.get("/api/healthCheck", (req, res) => {
+router.get("/healthCheck", (req, res) => {
   res.json({
     success: true,
     message: "Server is running",
   });
 });
 
-router.post("/api/upload", upload.single("file"), async (req, res) => {
+router.post("/upload", upload.single("file"), async (req, res) => {
   console.log("🔥 /api/upload route hit");
   console.log("Request body keys:", Object.keys(req.body || {}));
   console.log("Request file:", req.file ? { 
